@@ -1,0 +1,4 @@
+from pathlib import Path
+p=Path('Assets/ARCANA/Runtime/Elemental/CompoundExecution.cs');s=p.read_text().replace('List<Vector2> profile)', 'IReadOnlyList<Vector2> profile)');p.write_text(s)
+p=Path('Assets/ARCANA/Runtime/Elemental/ConductiveCompound.cs');s=p.read_text().replace('Vector3.up,.0f>1)', 'Vector3.up)');p.write_text(s)
+p=Path('Assets/ARCANA/Runtime/Elemental/ElementalAcceptance.cs');s=p.read_text().replace('Vector2 ScreenPoint(Vector2 page){var r=notebook.board.rectTransform;return RectTransformUtility.WorldToScreenPoint(null,r.TransformPoint(Vector2.Scale(page,r.rect.size*.5f)));}', 'Vector2 ScreenPoint(Vector2 page)=>notebook.board.PageToScreen(page);');s=s.replace('if(args.Contains("-compositionOnly"))', 'if(args.Contains("-compoundOnly")){yield return Compound();yield break;}\n            if(args.Contains("-compositionOnly"))');p.write_text(s)

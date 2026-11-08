@@ -1,0 +1,1 @@
+{"name":"Arcana.EditTests","references":["Arcana.Core","Arcana.Mechanics","Arcana.Field","Arcana.Runtime"],"includePlatforms":["Editor"],"optionalUnityReferences":["TestAssemblies"]}

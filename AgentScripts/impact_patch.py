@@ -1,0 +1,8 @@
+from pathlib import Path
+b=Path('Unity/ARCANA/Assets/ARCANA/Runtime/Elemental')
+p=b/'LaunchPlacement.cs';s=p.read_text().replace('Physics.Raycast(center+Vector3.up*20,Vector3.down,out var floor,60,~(1<<2),QueryTriggerInteraction.Ignore)&&floor.collider.GetComponentInParent<MatterBody>()==null', 'Physics.Raycast(motor.transform.position+Vector3.up*.2f,Vector3.down,out var floor,4,~(1<<2),QueryTriggerInteraction.Ignore)');p.write_text(s)
+p=b/'CompoundExecution.cs';s=p.read_text().replace('                    state.elapsed+=dt;state.speed=', '                    var previous=state.center+state.direction*state.distance;state.elapsed+=dt;state.speed=');s=s.replace('state.distance+state.speed*dt);', 'state.distance+state.speed*dt);SweepFieldLaunch(cast,state,previous);');p.write_text(s)
+p=b/'MatterBody.cs';s=p.read_text().replace('world.ElectricalContact(this,collision.collider,collision.GetContact(0).point);', 'world.ElectricalContact(this,collision.collider,collision.GetContact(0).point);if(world!=null&&collision.contactCount>0)world.LaunchContact(this,collision.collider,collision.GetContact(0).point,collision.GetContact(0).normal);');p.write_text(s)
+p=b/'ElementalEffects.cs';s=p.read_text().replace('if(cast.elapsed>c.duration)return Vector3.zero;', 'if(c.ended||cast.elapsed>c.duration)return Vector3.zero;');p.write_text(s)
+p=b/'FluidSurface.cs';s=p.read_text().replace('public ElementalWorld world;float nextUpdate;', 'public ElementalWorld world;');p.write_text(s)
+p=b/'ElementalWorld.cs';s=p.read_text().replace('if(!cast.active)continue;cast.elapsed+=dt;', 'if(!cast.active)continue;if(cast.channels.All(c=>c.ended)){Cancel(cast.id);continue;}cast.elapsed+=dt;');p.write_text(s)

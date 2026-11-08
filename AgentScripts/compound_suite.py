@@ -1,0 +1,2 @@
+from pathlib import Path
+p=Path('Assets/ARCANA/Runtime/Elemental/ElementalAcceptance.cs');s=p.read_text().replace('if(Environment.GetCommandLineArgs().Contains("-compositionOnly"))', 'if(Environment.GetCommandLineArgs().Contains("-compoundOnly")){yield return Compound();yield break;}\n            if(Environment.GetCommandLineArgs().Contains("-compositionOnly"))');s=s.replace('yield return Composition();yield return Performance();','yield return Composition();yield return Compound();yield return Performance();');p.write_text(s)

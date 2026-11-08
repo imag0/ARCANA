@@ -1,0 +1,1 @@
+{"name":"Arcana.Editor","references":["Arcana.Core","Arcana.Mechanics","Arcana.Field","Arcana.Runtime","Unity.InputSystem","Unity.ugui","Unity.TextMeshPro","Unity.RenderPipelines.Universal.Runtime","Unity.RenderPipelines.Core.Runtime","UnityEditor.TestRunner","UnityEngine.TestRunner"],"includePlatforms":["Editor"]}

@@ -1,0 +1,10 @@
+from pathlib import Path
+p=Path('Assets/ARCANA/Runtime/Elemental/CompoundAcceptance.cs');s=p.read_text();a=s.index('            world.input.SetPaused(false);var charged=');b=s.index('\n        }',a);s=s[:a]+'''            world.input.SetPaused(false);var charged=world.bodies.First(b=>b.owner==cast.id&&b.electricalJ>0);var receiver=world.posts.First(p=>p.receiver);double old=receiver.receivedJ,energy=charged.electricalJ;
+            world.Cancel();charged.Body.position=receiver.transform.position+Vector3.up*3;charged.Body.linearVelocity=Vector3.down;Physics.SyncTransforms();yield return new WaitForSeconds(2);
+            Check("Physical conductive impact debits stored energy",charged.electricalJ==0&&Math.Abs(receiver.receivedJ-old-energy*.9)<.1,receiver.receivedJ-old,energy*.9);
+            world.ResetArea("all");var wind=Graph(Rune.Air,new Vector3(-24,0,-18),new Vector3(-24,3,-18),Rune.Form);wind.height=3;wind.scale=4;wind.nodes[1].fillMode=1;wind.nodes[1].sketch=Loop(Vector2.zero,.45f);var spin=wind.Add(Rune.Spin,new Vector2(.5f,.3f));wind.Connect(wind.nodes[1].id,spin.id);spin.spin=2;
+            world.CloseSeal(wind);Place(new Vector3(-29,1,-24),wind.target);yield return new WaitForSeconds(1);
+            var air=FindObjectsByType<ParticleSystem>().FirstOrDefault(p=>p.name=="Flow-aligned air filaments");Check("Air renderer shows live field tracers",air!=null&&air.particleCount>0,air?.particleCount??0);yield return Capture("compound-air-streamlines");
+            int systems=FindObjectsByType<ParticleSystem>().Length;var rock=Take("bulk-stone",20,wind.target);for(int i=0;i<10;i++)world.Contact(rock,wind.target,3);yield return new WaitForSeconds(.1f);
+            Check("Ten impact events reuse particle systems",FindObjectsByType<ParticleSystem>().Length==systems,systems);yield return Capture("compound-earth-dust");world.Cancel();
+            Check("Compound conservation ledger closes",Math.Abs(world.ledger.Residual)<.01,world.ledger.Residual,.01);'''+s[b:];p.write_text(s)

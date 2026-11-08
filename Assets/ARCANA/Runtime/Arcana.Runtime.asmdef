@@ -1,0 +1,1 @@
+{"name":"Arcana.Runtime","rootNamespace":"Arcana","references":["Arcana.Core","Arcana.Mechanics","Arcana.Field","Unity.InputSystem","Unity.ugui","Unity.TextMeshPro","Unity.RenderPipelines.Universal.Runtime","Unity.RenderPipelines.Core.Runtime"]}

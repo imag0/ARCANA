@@ -1,0 +1,1 @@
+{"name":"Arcana.PlayTests","references":["Arcana.Core","Arcana.Mechanics","Arcana.Field","Arcana.Runtime","Unity.InputSystem"],"optionalUnityReferences":["TestAssemblies"]}

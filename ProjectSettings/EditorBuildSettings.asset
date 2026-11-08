@@ -6,7 +6,13 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/ARCANA/Scenes/ElementalPlayground.unity
+    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/ARCANA/Scenes/ArcanaLab.unity
+    guid: 9c461b63558f8274fb968d09804edead
   m_configObjects:
+    com.unity.adaptivePerformance.basic.provider_settings: {fileID: 11400000, guid: 84b62ed24a15d434a880c982839fd5af, type: 2}
+    com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: dc03d729ef365444e9c392100c534646, type: 2}
+    com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: 9ec37173740ed00498918e6de9a17f83, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
